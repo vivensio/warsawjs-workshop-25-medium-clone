@@ -46,7 +46,11 @@ class Header extends Component {
             <li className="nav-item">
               <Link to="/" className="nav-link">Home</Link>
             </li>
-            {/* Write your code here */}
+            {
+              isLoggedIn
+              ? <LoggedInItems currentUser={this.props.currentUser} />
+              : <LoggedOutItems />
+            }
           </ul>
         </div>
       </nav>
