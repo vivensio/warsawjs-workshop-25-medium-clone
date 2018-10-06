@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
+import api from '../api';
+import { setToken } from '../jwt';
 
 class Login extends Component {
   state = {
@@ -7,9 +9,27 @@ class Login extends Component {
     password: '',
   }
 
-  // Write your code here
+  changeEmail = (ev) => {
+    this.setState({ email: ev.target.value });
+  }
+
+  changePassword = (ev) => {
+    this.setState({ password: ev.target.value });
+  }
+
+  submitForm = async (ev) => {
+    ev.preventDefault();
+    const { email, password } = this.state;
+
+    const response = await api.Auth.login(email, password);
+    setToken(response.user.token);
+    this.props.setCurrentUser();
+    navigate('/');
+  }
 
   render() {
+    const { email, password } = this.state;
+
     return (
       <div className="auth-page">
         <div className="container page">
@@ -26,6 +46,8 @@ class Login extends Component {
                       className="form-control form-control-lg"
                       type="email"
                       placeholder="Email"
+                      value={email}
+                      onChange={this.changeEmail}
                     />
                   </fieldset>
                   <fieldset className="form-group">
@@ -33,11 +55,14 @@ class Login extends Component {
                       className="form-control form-control-lg"
                       type="password"
                       placeholder="Password"
+                      value={password}
+                      onChange={this.changePassword}
                     />
                   </fieldset>
                   <button
                     className="btn btn-lg btn-primary pull-xs-right"
                     type="submit"
+                    disabled={this.props.inProgress}
                   >
                     Sign in
                   </button>
