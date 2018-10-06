@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
+import api from '../api';
+import { setToken } from '../jwt';
 
 class Register extends Component {
   state = {
@@ -20,11 +22,14 @@ class Register extends Component {
     this.setState({ username: ev.target.value });
   }
 
-  submitForm = (ev) => {
+  submitForm = async (ev) => {
     ev.preventDefault();
     const { username, email, password } = this.state;
 
-    console.log(username, email, password);
+    const response = await api.Auth.register(username, email, password);
+    setToken(response.user.token);
+    this.props.setCurrentUser();
+    navigate('/');
   }
 
   render() {

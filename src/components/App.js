@@ -3,10 +3,15 @@ import { Router } from '@reach/router';
 import Header from './Header';
 import Home from './Home';
 import Register from './Register';
+import api from '../api';
 
 class App extends Component {
   state = {
     currentUser: null,
+  }
+
+  setCurrentUser = () => {
+    return api.Auth.current().then(data => this.setState({ currentUser: data.user }));
   }
 
   render() {
@@ -17,7 +22,7 @@ class App extends Component {
         <Header currentUser={currentUser} />
         <Router>
           <Home path='/' />
-          <Register path='/register' />
+          <Register path='/register' setCurrentUser={this.setCurrentUser} />
         </Router>
       </div>
     );
