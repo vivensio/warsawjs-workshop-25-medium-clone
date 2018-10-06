@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Router } from '@reach/router';
 import Header from './Header';
 import Home from './Home';
+import Register from './Register';
 
 class App extends Component {
   state = {
@@ -16,7 +17,7 @@ class App extends Component {
         <Header currentUser={currentUser} />
         <Router>
           <Home path='/' />
-          {/* Write your code here */}
+          <Register path='/register' />
         </Router>
       </div>
     );
