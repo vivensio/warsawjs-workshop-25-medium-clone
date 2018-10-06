@@ -6,7 +6,7 @@ const Tags = ({ tags }) => (
     <div className="tag-list">
       {
         tags.map(tag => (
-          <a href="" className="tag-default tag-pill" key={tag}>
+          <a href="/" className="tag-default tag-pill" key={tag}>
             {tag}
           </a>
           )
