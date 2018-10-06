@@ -13,7 +13,19 @@ class Editor extends Component {
   }
 
   componentDidMount() {
-    // Write your code here
+    const { slug } = this.props;
+
+    if (slug) {
+      api.Articles.get(this.props.slug)
+      .then(response => {
+        const { title, description, body } = response.article;
+        this.setState({
+          title,
+          description,
+          body,
+        });
+      });
+    }
   }
 
   handleInputChange = (ev) => {
@@ -25,7 +37,10 @@ class Editor extends Component {
     ev.preventDefault();
     
     const article = { ...this.state };
-    // Write your code here
+    const { slug } = this.props;
+    const call = slug ? api.Articles.update({ ...article, slug }) : api.Articles.create(article);
+    const response = await call;
+    navigate(`/article/${response.article.slug}`);
   }
 
   render() {
