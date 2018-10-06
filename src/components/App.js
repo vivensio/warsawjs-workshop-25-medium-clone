@@ -16,6 +16,7 @@ class App extends Component {
         <Header currentUser={currentUser} />
         <Router>
           <Home path='/' />
+          {/* Write your code here */}
         </Router>
       </div>
     );
