@@ -7,9 +7,10 @@ class Home extends React.Component {
   state = {
     tags: [
       'react',
-      'redux',
       'vue',
-      'vuex',
+      'angular',
+      'preact',
+      'inferno',
     ]
   };
   render() {
