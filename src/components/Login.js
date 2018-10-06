@@ -7,6 +7,8 @@ class Login extends Component {
     password: '',
   }
 
+  // Write your code here
+
   render() {
     return (
       <div className="auth-page">
