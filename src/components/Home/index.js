@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Banner from './Banner';
 import Main from './Main';
 import Tags from './Tags';
 
-class Home extends React.Component {
+class Home extends Component {
   state = {
     tags: [
       'react',
