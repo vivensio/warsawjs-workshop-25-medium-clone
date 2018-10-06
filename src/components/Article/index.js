@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ArticleMeta from './ArticleMeta';
 import api from '../../api';
 
 class Article extends Component {
@@ -17,14 +18,18 @@ class Article extends Component {
     }
 
     const { title, body } = this.state.article;
-    const canModify = false; // Change canModify so only the author can modify the post
+    const canModify = this.props.currentUser &&
+      this.props.currentUser.username === this.state.article.author.username;
 
     return (
       <div className="article-page">
         <div className="banner">
           <div className="container">
             <h1>{title}</h1>
-            {/* Write your code here */}
+            <ArticleMeta
+              article={this.state.article}
+              canModify={canModify}
+            />
           </div>
         </div>
         <div className="container page">
