@@ -12,7 +12,13 @@ class Register extends Component {
     this.setState({ email: ev.target.value });
   }
 
-  // Write your code here
+  changePassword = (ev) => {
+    this.setState({ password: ev.target.value });
+  }
+
+  changeUsername = (ev) => {
+    this.setState({ username: ev.target.value });
+  }
 
   submitForm = (ev) => {
     ev.preventDefault();
