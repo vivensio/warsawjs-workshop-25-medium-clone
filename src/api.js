@@ -32,8 +32,10 @@ const Auth = {
 const Articles = {
   create: article =>
     requests.post('/articles', { article }),
-  get: slug => 
+  get: slug =>
     requests.get(`/articles/${slug}`),
+  update: article =>
+    requests.put(`/articles/${article.slug}`, { article }),
 };
 
 export default {
