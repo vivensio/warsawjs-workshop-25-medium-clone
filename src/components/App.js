@@ -5,10 +5,18 @@ import Home from './Home';
 import Login from './Login';
 import Register from './Register';
 import api from '../api';
+import { getToken } from '../jwt';
 
 class App extends Component {
   state = {
     currentUser: null,
+  }
+
+  componentDidMount() {
+    const token = getToken();
+    if (token) {
+      this.setCurrentUser();
+    }
   }
 
   setCurrentUser = () => {
