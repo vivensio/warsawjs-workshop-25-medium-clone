@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Router } from '@reach/router';
 import Header from './Header';
 import Home from './Home';
+import Login from './Login';
 import Register from './Register';
 import api from '../api';
 
@@ -22,6 +23,7 @@ class App extends Component {
         <Header currentUser={currentUser} />
         <Router>
           <Home path='/' />
+          <Login path='/login' setCurrentUser={this.setCurrentUser} />
           <Register path='/register' setCurrentUser={this.setCurrentUser} />
         </Router>
       </div>
