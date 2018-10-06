@@ -29,6 +29,14 @@ const Auth = {
     requests.get('/user'),
 };
 
+const Articles = {
+  create: article =>
+    requests.post('/articles', { article }),
+  get: slug => 
+    requests.get(`/articles/${slug}`),
+};
+
 export default {
   Auth,
+  Articles,
 };
