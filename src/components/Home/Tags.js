@@ -4,7 +4,14 @@ const Tags = ({ tags }) => (
   tags ?
   (
     <div className="tag-list">
-      {/* Write your code here */}
+      {
+        tags.map(tag => (
+          <a href="" className="tag-default tag-pill" key={tag}>
+            {tag}
+          </a>
+          )
+        )
+      }
     </div>
   )
   : (
