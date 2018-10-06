@@ -12,6 +12,10 @@ class Editor extends Component {
     }
   }
 
+  componentDidMount() {
+    // Write your code here
+  }
+
   handleInputChange = (ev) => {
     const { name, value } = ev.target;
     this.setState({ [name]: value });
@@ -21,8 +25,7 @@ class Editor extends Component {
     ev.preventDefault();
     
     const article = { ...this.state };
-    const response = await api.Articles.create(article);
-    navigate(`/article/${response.article.slug}`);
+    // Write your code here
   }
 
   render() {
